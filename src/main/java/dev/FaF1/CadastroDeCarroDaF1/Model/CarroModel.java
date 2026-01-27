@@ -1,12 +1,18 @@
 package dev.FaF1.CadastroDeCarroDaF1.Model;
 
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.time.LocalDate;
 
 //Entity transforma uma classe em uma entidade do DB
 @Entity
 @Table(name = "tb_cadastro_de_carros")
+@NoArgsConstructor
+@AllArgsConstructor
+@Data
 public class CarroModel {
 
     @Id
@@ -22,38 +28,6 @@ public class CarroModel {
     @JoinColumn(name = "equipes_id") //Foreign KEY ou CHAVE ESTRANGEIRA
     private EquipesModel equipes;
 
-    public CarroModel(){
-    }
-
-    public CarroModel(String nomeCarro, String descricaoPinturaCarro, LocalDate dataLancamento){
-        this.nomeCarro = nomeCarro;
-        this.descricaoPinturaCarro = descricaoPinturaCarro;
-        this.dataLancamento = dataLancamento;
-    }
-
-    public String getNomeCarro() {
-        return nomeCarro;
-    }
-
-    public void setNomeCarro(String nomeCarro) {
-        this.nomeCarro = nomeCarro;
-    }
-
-    public String getDescricaoPinturaCarro() {
-        return descricaoPinturaCarro;
-    }
-
-    public void setDescricaoPinturaCarro(String descricaoPinturaCarro) {
-        this.descricaoPinturaCarro = descricaoPinturaCarro;
-    }
-
-    public LocalDate getDataLancamento() {
-        return dataLancamento;
-    }
-
-    public void setDataLancamento(LocalDate dataLancamento) {
-        this.dataLancamento = dataLancamento;
-    }
 
 
 }

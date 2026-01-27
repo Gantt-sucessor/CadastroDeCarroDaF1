@@ -1,11 +1,17 @@
 package dev.FaF1.CadastroDeCarroDaF1.Model;
 
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.util.List;
 
 @Entity
 @Table(name="tb_equipes")
+@NoArgsConstructor
+@AllArgsConstructor
+@Data
 public class EquipesModel {
 
     @Id
@@ -17,31 +23,6 @@ public class EquipesModel {
     //Uma equipe pode ter VÁRIOS carros
     @OneToMany(mappedBy = "equipes")
     private List<CarroModel> carros;
-
-    public EquipesModel() {
-
-    }
-
-    public EquipesModel(String nomeDaEquipe, String modelo) {
-        this.nome = nomeDaEquipe;
-        this.modelo = modelo;
-    }
-
-    public String getNomeDaEquipe() {
-        return nome;
-    }
-
-    public void setNomeDaEquipe(String nomeDaEquipe) {
-        this.nome = nomeDaEquipe;
-    }
-
-    public String getModelo() {
-        return modelo;
-    }
-
-    public void setModelo(String modelo) {
-        this.modelo = modelo;
-    }
 
 
 }
