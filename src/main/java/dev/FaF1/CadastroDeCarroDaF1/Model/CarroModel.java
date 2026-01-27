@@ -16,8 +16,7 @@ import java.time.LocalDate;
 public class CarroModel {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY
-    )
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     Long id;
 
     @Column(unique = true)
