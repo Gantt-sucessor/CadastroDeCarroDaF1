@@ -19,7 +19,10 @@ public class CarroModel {
     @GeneratedValue(strategy = GenerationType.IDENTITY
     )
     Long id;
+
+    @Column(unique = true)
     private String nomeCarro;
+
     private String descricaoPinturaCarro;
     private LocalDate dataLancamento;
 
