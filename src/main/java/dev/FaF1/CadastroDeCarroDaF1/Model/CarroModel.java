@@ -17,6 +17,11 @@ public class CarroModel {
     private String descricaoPinturaCarro;
     private LocalDate dataLancamento;
 
+    //@ManyToOne um carro tem apenas UMA ÚNICA equipe
+    @ManyToOne()
+    @JoinColumn(name = "equipes_id") //Foreign KEY ou CHAVE ESTRANGEIRA
+    private EquipesModel equipes;
+
     public CarroModel(){
     }
 
