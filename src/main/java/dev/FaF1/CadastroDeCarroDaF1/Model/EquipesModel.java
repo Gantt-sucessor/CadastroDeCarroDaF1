@@ -22,6 +22,7 @@ public class EquipesModel {
 
     //Uma equipe pode ter VÁRIOS carros
     @OneToMany(mappedBy = "equipes")
+    @com.fasterxml.jackson.annotation.JsonIgnore
     private List<CarroModel> carros;
 
 

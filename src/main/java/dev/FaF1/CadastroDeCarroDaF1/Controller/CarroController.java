@@ -1,20 +1,28 @@
 package dev.FaF1.CadastroDeCarroDaF1.Controller;
 
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import dev.FaF1.CadastroDeCarroDaF1.Model.CarroModel;
+import dev.FaF1.CadastroDeCarroDaF1.Repository.CarroRepository;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
-@RequestMapping
+@RequestMapping("/carro")
 public class CarroController {
 
-    @GetMapping("/voltamo")
-    public String boasVindas(){
-        return "Minha primeira rota real";
+    private final CarroRepository carroRepository;
+
+    public CarroController(CarroRepository carroRepository){
+        this.carroRepository = carroRepository;
     }
 
-    @GetMapping("/voltamo/testando")
-    public String boasSaidas(){
-        return "Meu primeiro teste de rota real";
+    @PostMapping
+    public CarroModel salvarCarro(@RequestBody CarroModel carroModel){
+        return carroRepository.save(carroModel);
+    }
+
+    @GetMapping
+    public List<CarroModel>listarCarro(){
+        return carroRepository.findAll();
     }
 }
