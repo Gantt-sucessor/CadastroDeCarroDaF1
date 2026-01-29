@@ -2,6 +2,7 @@ package dev.FaF1.CadastroDeCarroDaF1.Controller;
 
 import dev.FaF1.CadastroDeCarroDaF1.Model.EquipesModel;
 import dev.FaF1.CadastroDeCarroDaF1.Repository.EquipesRepository;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -24,5 +25,18 @@ public class EquipesController {
     @GetMapping
     public List<EquipesModel> listarEquipes(){
         return equipesRepository.findAll();
+    }
+
+    @PutMapping("/{id}")
+    public ResponseEntity<EquipesModel> atualizarEquipes(@PathVariable Long id, @RequestBody EquipesModel equipesAtualizada){
+        return equipesRepository.findById(id).map(equipeSalva ->{
+            equipeSalva.setNome(equipesAtualizada.getNome());
+            equipeSalva.setModelo(equipesAtualizada.getModelo());
+
+            EquipesModel equipeSalvaAtualizada = equipesRepository.save(equipeSalva);
+
+            return ResponseEntity.ok(equipeSalvaAtualizada);
+        })
+        .orElse(ResponseEntity.notFound().build());
     }
 }
